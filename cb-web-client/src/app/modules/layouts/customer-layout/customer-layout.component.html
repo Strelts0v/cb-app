@@ -1,1 +1,57 @@
-<router-outlet></router-outlet>
+<mat-drawer-container class="cb-sidenav-container" autosize>
+
+  <mat-drawer class="cb-sidenav-menu" mode="side" opened="true" color="primary">
+    <div class="menu-logo">
+      <img src="/assets/icons/cb-logo.png">
+    </div>
+    <mat-divider></mat-divider>
+    <div class="menu-details">
+      <i *ngIf="showExtendedMenu" class="material-icons" (click)="showExtendedMenu = !showExtendedMenu">
+        keyboard_arrow_right</i>
+      <i *ngIf="!showExtendedMenu" class="material-icons" (click)="showExtendedMenu = !showExtendedMenu">
+        keyboard_arrow_left</i>
+    </div>
+
+    <mat-list *ngIf="!showExtendedMenu">
+      <mat-list-item>
+        <i class="material-icons">account_circle</i>
+      </mat-list-item>
+      <mat-list-item>
+        <i class="material-icons">shopping_basket</i>
+      </mat-list-item>
+      <mat-list-item>
+        <i class="material-icons">restaurant_menu</i>
+      </mat-list-item>
+    </mat-list>
+
+    <mat-list *ngIf="showExtendedMenu">
+      <mat-list-item>
+        <i class="material-icons">account_circle</i>
+        <span class="menu-item-description">Profile</span>
+      </mat-list-item>
+      <mat-list-item>
+        <i class="material-icons">shopping_basket</i>
+        <span class="menu-item-description">Orders</span>
+      </mat-list-item>
+      <mat-list-item>
+        <i class="material-icons">restaurant_menu</i>
+        <span class="menu-item-description">Restaurants</span>
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <div class="cb-sidenav-content">
+    <div class="cb-toolbar">
+      <mat-toolbar color="secondary">
+        <mat-toolbar-row>
+          <div class="notification-panel">
+            <i class="material-icons">notifications</i>
+          </div>
+        </mat-toolbar-row>
+      </mat-toolbar>
+    </div>
+    <div class="cb-main-content">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+</mat-drawer-container>

@@ -7,9 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CustomerLayoutComponent implements OnInit {
 
+  showExtendedMenu: boolean;
+
   constructor() { }
 
   ngOnInit() {
+    this.showExtendedMenu = false;
   }
 
 }
