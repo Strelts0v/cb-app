@@ -1,0 +1,77 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Search By Location</mat-panel-title>
+      <mat-panel-description>
+        Use one or all of the following options for searching restaurants
+        <mat-icon class="material-icons" flex>location_on</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-grid-list cols="4" rowHeight="60px">
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="Office, Apt, Home, Street" [(ngModel)]="location.street">
+          <button mat-button *ngIf="location.street" matSuffix mat-icon-button aria-label="Clear"
+           (click)="location.street=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+    
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="City" [(ngModel)]="location.city">
+          <button mat-button *ngIf="location.city" matSuffix mat-icon-button aria-label="Clear"
+           (click)="location.city=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+    
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="State" [(ngModel)]="location.state">
+          <button mat-button *ngIf="location.state" matSuffix mat-icon-button aria-label="Clear"
+           (click)="location.state=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+    
+      <mat-grid-tile>
+        <mat-form-field>
+          <input matInput placeholder="Country" [(ngModel)]="location.country">
+          <button mat-button *ngIf="location.country" matSuffix mat-icon-button aria-label="Clear"
+           (click)="location.country=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-action-row>
+      <button mat-button color="primary" (click)="searchByLocation()">Search</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Specify Search Radius</mat-panel-title>
+      <mat-panel-description>
+        Specify radius for searching the nearest restaurants
+        <mat-icon class="material-icons" flex>gps_fixed</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+  
+    <mat-form-field>
+      <input matInput #milesInput placeholder="Radius of search area" [(ngModel)]="searchAreaRadius"
+       [value]='searchAreaRadiusInMiles() | number:"0.0-2"' (keyup)="milesToSearchAreaRadius(milesInput.value)"/>
+      <button mat-button *ngIf="searchAreaRadius" matSuffix mat-icon-button aria-label="Clear"
+       (click)="searchAreaRadius=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </mat-expansion-panel>
+
+</mat-accordion>
