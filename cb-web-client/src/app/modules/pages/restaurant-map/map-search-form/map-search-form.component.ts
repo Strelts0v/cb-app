@@ -1,11 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material';
-
-import { MapSearchService } from './../map-search.service';
-
-import { Location } from './../data/location';
-import { Marker } from './../data/marker';
-import { GeoLocationData } from '../../../../constants/geo-location.constant';
+import { Location } from './../../../../data/location';
+import { Marker } from './../../../../data/marker';
+import { GeoLocationData } from './../../../../constants/geo-location.constant';
+import { MapSearchService } from './../../../../services/map-search.service';
 
 @Component({
   selector: 'app-map-search-form',
@@ -39,18 +37,18 @@ export class MapSearchFormComponent implements OnInit {
             lat: +pos.coords.latitude,
             draggable: true
           },
-        }
-      })
+        };
+      });
     }
   }
 
-  private initCurrentLocationWithDefaultData(){
-    let marker: Marker = {
+  private initCurrentLocationWithDefaultData() {
+    const marker: Marker = {
       lat: GeoLocationData.DEFAULT_LATITUDE,
       lng: GeoLocationData.DEFAULT_LONGITUDE,
       draggable: true
     };
-    
+
     this.location = {
       lat: GeoLocationData.DEFAULT_LATITUDE,
       lng: GeoLocationData.DEFAULT_LONGITUDE,
@@ -73,7 +71,7 @@ export class MapSearchFormComponent implements OnInit {
 
   milesToSearchAreaRadius(value) {
     this.searchAreaRadius = value;
-    this.onChangedSearchAreaRadius()
+    this.onChangedSearchAreaRadius();
   }
 
   searchAreaRadiusInMiles() {

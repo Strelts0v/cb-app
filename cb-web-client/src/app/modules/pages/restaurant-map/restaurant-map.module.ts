@@ -3,14 +3,11 @@ import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core/services';
 import { FormsModule } from '@angular/forms';
-
 import { RestaurantMapRoutingModule } from './restaurant-map-routing.module';
 import { MaterialModule } from './../../shared/material/material.module';
-
 import { RestaurantMapComponent } from './restaurant-map.component';
 import { MapSearchFormComponent } from './map-search-form/map-search-form.component';
-
-import { MapSearchService } from './map-search.service';
+import { ServicesModule } from './../../../services/services.module';
 
 @NgModule({
   imports: [
@@ -18,7 +15,7 @@ import { MapSearchService } from './map-search.service';
     RestaurantMapRoutingModule,
     MaterialModule,
     AgmCoreModule.forRoot({
-      apiKey:'AIzaSyAfJTVKnpLl0ULuuwDuix-9ANpyQhP6mfc'
+      apiKey: 'AIzaSyAfJTVKnpLl0ULuuwDuix-9ANpyQhP6mfc'
     }),
     FormsModule
   ],
@@ -28,7 +25,12 @@ import { MapSearchService } from './map-search.service';
   ],
   providers: [
     GoogleMapsAPIWrapper,
-    MapSearchService
-  ]
+    ServicesModule
+  ],
+  entryComponents: [
+    RestaurantMapComponent,
+    MapSearchFormComponent
+  ],
+  bootstrap: [RestaurantMapComponent]
 })
 export class RestaurantMapModule { }
