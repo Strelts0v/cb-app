@@ -35,16 +35,13 @@ body { margin: 0; font-family: 'Roboto', sans-serif; }
 }
 
 .cb-toolbar {
-  margin: 0;
   display: flex;
-  flex: 1 1 auto;
+  justify-content: flex-end;
   min-height: 12%;
-  .notification-panel {
-    justify-content: flex-end;
-  }
 }
 
 .cb-main-content {
   padding: 10px;
   display: block;
+  background: #eeeeee;
 }
