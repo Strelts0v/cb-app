@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { MaterialModule } from './../../shared/material/material.module';
 import { CustomerLayoutComponent } from './customer-layout.component';
 import { CustomerStates } from '../../../constants/customer-states.constant';
-
+import { RestaurantMapComponent } from '../../pages/restaurant-map/restaurant-map.component';
 
 const routes: Routes = [
   {
@@ -16,7 +15,7 @@ const routes: Routes = [
       },
       {
         path: CustomerStates.RESTAURANT_MAP,
-        loadChildren: '../../pages/restaurant-map/restaurant-map.module#RestaurantMapModule',
+        component: RestaurantMapComponent,
       }
     ]
   }
