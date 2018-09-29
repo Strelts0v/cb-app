@@ -2,46 +2,12 @@
 
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: 'Roboto', sans-serif; }
-
-.cb-sidenav-container {
-  height: 100%;
-  width: 100%;
-}
-
-.cb-sidenav-content {
+html, body { 
   height: 100%;
 }
 
-.cb-sidenav-menu {
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  .menu-logo {
-    padding: 10px;
-    img {
-      max-width: 50px;
-      height: auto;
-    }
-  }
-  .menu-item-description {
-    padding-left: 5px;
-  }
-  .menu-details {
-    padding: 20px 0 0 15px;
-  }
-}
-
-.cb-toolbar {
-  display: flex;
-  justify-content: flex-end;
-  min-height: 12%;
-}
-
-.cb-main-content {
-  padding: 10px;
-  display: block;
-  background: #eeeeee;
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #673ab7;
 }
