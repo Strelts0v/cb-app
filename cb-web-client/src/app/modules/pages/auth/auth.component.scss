@@ -1,0 +1,29 @@
+.cb-auth-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cb-auth-card__header-image {
+    background-image: url('/assets/icons/cb-logo.png');
+    background-size: cover;
+    width: 15%;
+    height: 15%;
+}
+
+.cb-auth-card__warning-message {
+    color: #d5bf04;
+}
+
+.cb-auth-card__auth-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cb-auth-card__redirect-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
