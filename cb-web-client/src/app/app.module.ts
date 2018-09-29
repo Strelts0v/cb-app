@@ -10,6 +10,8 @@ import { environment } from '../environments/environment';
 import { ServicesModule } from './services/services.module';
 import { InMemoryRestaurantService } from './services/in-memory/in-memory-restaurants.service';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { GuardsModule } from './guards/guards.module';
+import { AuthModule } from './modules/pages/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryRestaurantService, { dataEncapsulation: false }
     ),
-    ServicesModule
+    ServicesModule,
+    GuardsModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
