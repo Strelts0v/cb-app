@@ -5,7 +5,7 @@ import { MapSearchService } from './../../../services/map-search.service';
 import { Location } from './../../../data/location';
 import { Marker } from './../../../data/marker';
 import { GeoLocationData } from './../../../constants/geo-location.constant';
-import { RestaurantLocation } from '../../../data/restaurant-location';
+import { Restaurant } from '../../../data/restaurant';
 import { RestaurantService } from './../../../services/restaurant.service';
 import { MessageService } from '../../../services/message.service';
 
@@ -23,7 +23,7 @@ export class RestaurantMapComponent implements OnInit {
 
   userLocation: Location;
   searchAreaRadius: number;
-  restaurantLocations: RestaurantLocation[];
+  restaurants: Restaurant[];
 
   @ViewChild(AgmMap) map: AgmMap;
 
@@ -44,7 +44,7 @@ export class RestaurantMapComponent implements OnInit {
   ngOnInit() {
     this.initCurrentLocation();
     this.initCurrentSearchAreaRadius();
-    this.initNearestRestaurantLocations();
+    this.initNearestRestaurants();
   }
 
   private initCurrentLocation() {
@@ -104,10 +104,10 @@ export class RestaurantMapComponent implements OnInit {
     );
   }
 
-  private initNearestRestaurantLocations() {
-    this.restaurantService.getRestaurantLocations().subscribe(
-      restaurantLocations => {
-        this.restaurantLocations = restaurantLocations;
+  private initNearestRestaurants() {
+    this.restaurantService.getRestaurants().subscribe(
+      restaurants => {
+        this.restaurants = restaurants;
       }
     );
   }
@@ -212,7 +212,7 @@ export class RestaurantMapComponent implements OnInit {
     }
   }
 
-  onRestaurantLocationMarkerClick(restaurantLocation: RestaurantLocation) {
+  onRestaurantLocationMarkerClick(restaurant: Restaurant) {
     this.log('On Marker click handler');
   }
 

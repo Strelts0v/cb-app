@@ -1,6 +1,8 @@
 import { Location } from './location';
 
-export interface RestaurantLocation {
+export interface Restaurant {
     id: number;
+    organizationId: number;
+    name: string;
     location: Location;
 }
