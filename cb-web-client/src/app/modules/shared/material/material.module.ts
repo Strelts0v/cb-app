@@ -21,6 +21,7 @@ import {
 } from '@angular/material';
 
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatFileUploadModule } from 'angular-material-fileupload';
 
 @NgModule({
   imports: [
@@ -43,6 +44,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     MatExpansionModule,
     MatGridListModule,
+    MatFileUploadModule,
   ],
   exports: [
     MatIconModule,
@@ -64,6 +66,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatNativeDateModule,
     MatExpansionModule,
     MatGridListModule,
+    MatFileUploadModule
   ]
 })
 export class MaterialModule {
