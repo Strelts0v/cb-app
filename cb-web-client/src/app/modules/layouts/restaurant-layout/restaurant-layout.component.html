@@ -1,1 +1,38 @@
-<router-outlet></router-outlet>
+<mat-drawer-container class="cb-sidenav-container" autosize>
+
+    <mat-drawer class="cb-sidenav-container__menu" mode="side" opened="true" color="primary">
+        <div class="menu-logo">
+            <img src="/assets/icons/cb-logo.png">
+        </div>
+        <mat-divider></mat-divider>
+
+        <mat-list>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickRestaurantList()">view_list</i>
+            </mat-list-item>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickAddRestaurant()">add</i>
+            </mat-list-item>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickOrganizationSettings()">domain</i>
+            </mat-list-item>
+        </mat-list>
+
+    </mat-drawer>
+    <mat-toolbar color="primary">
+        <mat-toolbar-row class="cb-sidenav-container__toolbar">
+            <div>
+                <i class="material-icons">notifications</i>
+            </div>
+            <div>
+                <i class="material-icons" (click)="onLogoutClick()">exit_to_app</i>
+            </div>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="cb-sidenav-container__main-content">
+        <router-outlet></router-outlet>
+    </div>
+
+    <app-footer></app-footer>
+
+</mat-drawer-container>
