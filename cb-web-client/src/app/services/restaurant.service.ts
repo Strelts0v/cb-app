@@ -1,48 +1,89 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
-import { RestaurantLocation } from '../data/restaurant-location';
+import { Restaurant } from '../data/restaurant';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
+import { Endpoints } from '../constants/endpoint.constant';
+
+const httpOptions = {
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestaurantService {
 
-  private readonly RESTAURANTS_URL = 'api/restaurantLocations';
-
   constructor(
     private http: HttpClient,
     private messageService: MessageService) { }
 
-  getRestaurantLocations(): Observable<RestaurantLocation[]> {
-    return this.http.get<RestaurantLocation[]>(this.RESTAURANTS_URL)
+  getRestaurants(): Observable<Restaurant[]> {
+    return this.http.get<Restaurant[]>(Endpoints.RESTAURANTS)
       .pipe(
-        tap(restaurantLocations => this.log('fetched restaurant locations')),
-        catchError(this.handleError('getRestaurantsLocations', []))
+        tap(restaurants => this.log('fetched restaurants count: ' + restaurants.length)),
+        catchError(this.handleError('getRestaurants', []))
       );
   }
 
-    /**
-     * Handle Http operation that failed.
-     * Let the app continue.
-     * @param operation - name of the operation that failed
-     * @param result - optional value to return as the observable result
-     */
-    private handleError<T> (operation = 'operation', result?: T) {
-      return (error: any): Observable<T> => {
+  getRestaurant(id: number): Observable<Restaurant> {
+    const url = `${Endpoints.RESTAURANTS}/${id}`;
+    return this.http.get<Restaurant>(url)
+      .pipe(
+        tap(_ => this.log(`fetched restaurant id=${id}`)),
+        catchError(this.handleError<Restaurant>(`getRestaurant id=${id}`))
+      );
+  }
 
-        // TODO: send the error to remote logging infrastructure
-        this.log(error); // log to console instead
+  updateRestaurant(restaurant: Restaurant): Observable<any> {
+    const url = `${Endpoints.RESTAURANTS}`;
+    return this.http.put(url, restaurant, httpOptions)
+      .pipe(
+        tap(_ => this.log(`updated restaurant id=${restaurant.id}`)),
+        catchError(this.handleError<any>(`updateRestaurant`))
+      );
+  }
 
-        // TODO: better job of transforming error for user consumption
-        this.log(`${operation} failed: ${error.message}`);
+  addRestaurant(restaurant: Restaurant): Observable<Restaurant> {
+    const url = `${Endpoints.RESTAURANTS}`;
+    return this.http.post<Restaurant>(url, restaurant, httpOptions)
+      .pipe(
+        tap((rest: Restaurant) => this.log(`added restaurant id=${rest.id}`)),
+        catchError(this.handleError<Restaurant>('addRestaurant'))
+      );
+  }
 
-        // Let the app keep running by returning an empty result.
-        return of(result as T);
-      };
-    }
+  deleteRestaurant(restaurant: Restaurant | number): Observable<Restaurant> {
+    const id = typeof restaurant === 'number' ? restaurant : restaurant.id;
+    const url = `${Endpoints.RESTAURANTS}/${id}`;
+
+    return this.http.delete<Restaurant>(url, httpOptions)
+      .pipe(
+        tap(_ => this.log(`deleted restaurant id=${id}`)),
+        catchError(this.handleError<Restaurant>('deleteRestaurant'))
+      );
+  }
+
+  /**
+   * Handle Http operation that failed.
+   * Let the app continue.
+   * @param operation - name of the operation that failed
+   * @param result - optional value to return as the observable result
+   */
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+
+      // TODO: send the error to remote logging infrastructure
+      this.log(error); // log to console instead
+
+      // TODO: better job of transforming error for user consumption
+      this.log(`${operation} failed: ${error.message}`);
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
+  }
 
   private log(message: string) {
     this.messageService.add(`RestaurantService: ${message}`);
