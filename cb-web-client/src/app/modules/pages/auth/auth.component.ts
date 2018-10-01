@@ -16,6 +16,8 @@ export class AuthComponent implements OnInit {
 
   private isLoggedIn: boolean;
 
+  private defaultOrganizationId = 1;
+
   constructor(
     private messageService: MessageService,
     private router: Router,
@@ -41,7 +43,7 @@ export class AuthComponent implements OnInit {
   }
 
   redirectToRestaurantLayout() {
-    this.router.navigate([this.restaurantUrl]);
+    this.router.navigate([`${this.restaurantUrl}/${this.defaultOrganizationId}`]);
     this.log(`Redirecting to the Restaurant Layout`);
   }
 
