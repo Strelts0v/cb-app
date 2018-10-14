@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { InMemoryDataService } from './in-memory/in-memory-data.service';
 import { OrganizationService } from './organization.service';
 import { RestaurantCommunicationService } from './restaurant-communication.service';
+import { NotificationDialogModule } from '../modules/components/notification-dialog/notification-dialog.module';
 
 @NgModule({
   imports: [
@@ -21,6 +22,7 @@ import { RestaurantCommunicationService } from './restaurant-communication.servi
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false },
     ),
+    NotificationDialogModule
   ],
   providers: [
     MapSearchService,
