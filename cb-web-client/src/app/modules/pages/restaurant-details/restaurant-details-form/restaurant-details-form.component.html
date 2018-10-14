@@ -1,0 +1,21 @@
+<mat-card class="restaurant-form">
+  <mat-card-header>
+    <mat-card-title>
+      <h1>Restaurant Details Form</h1>
+    </mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form *ngIf="restaurant">
+      <mat-form-field class="restaurant-form__input">
+        <input matInput *ngIf="restaurant" placeholder="Restaurant name"
+          [(ngModel)]="restaurant.name" name="name">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <button mat-button (click)="saveRestaurant()">SAVE</button>
+  </mat-card-actions>
+
+</mat-card>
