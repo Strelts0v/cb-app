@@ -28,7 +28,7 @@
   
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="onRestaurantClick()" class="restaurants-table-wrapper__table-row"></tr>
+        (click)="onRestaurantClick(row.id)" class="restaurants-table-wrapper__table-row"></tr>
     </table>
   
     <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons>

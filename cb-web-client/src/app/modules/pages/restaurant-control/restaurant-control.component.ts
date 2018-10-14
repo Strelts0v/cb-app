@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Restaurant } from '../../../data/restaurant';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { RestaurantService } from '../../../services/restaurant.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { RestaurantCommunicationService } from '../../../services/restaurant-communication.service';
 import { Organization } from '../../../data/organization';
+import { OrganizationService } from 'src/app/services/organization.service';
 
 @Component({
   selector: 'app-restaurant-control',
@@ -22,14 +23,24 @@ export class RestaurantControlComponent implements OnInit {
   constructor(
     private restaurantService: RestaurantService,
     private router: Router,
-    private restaurantCommunicationService: RestaurantCommunicationService) {
+    private route: ActivatedRoute,
+    private organizationService: OrganizationService) {
   }
 
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
 
-    this.initRestaurantCommunicationService();
+    this.initOrganization();
     this.initRestaurants();
+  }
+
+  private initOrganization() {
+    const organizationId = +this.route.parent.snapshot.paramMap.get('organizationId');
+    this.organizationService.getOrganization(organizationId).subscribe(
+      organization => {
+        this.organization = organization;
+      }
+    );
   }
 
   private initRestaurants() {
@@ -40,21 +51,9 @@ export class RestaurantControlComponent implements OnInit {
     );
   }
 
-  private initRestaurantCommunicationService() {
-    this.restaurantCommunicationService.organization$.subscribe(
-      organization => {
-        this.organization = organization;
-      }
-    );
-    this.restaurantCommunicationService.restaurants$.subscribe(
-      restaurants => {
-        this.dataSource.data = restaurants;
-      }
-    );
-  }
-
-  onRestaurantClick() {
-    console.log('on restaurant edit click handler');
+  onRestaurantClick(restaurantId: number) {
+    const restaurantDetailsUrl = `restaurant/${this.organization.id}/details/${restaurantId}`;
+    this.router.navigate([restaurantDetailsUrl]);
   }
 
 }
