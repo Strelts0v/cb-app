@@ -1,0 +1,10 @@
+.notification-dialog {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notification-dialog__message {
+    margin: 0 5px;
+}
