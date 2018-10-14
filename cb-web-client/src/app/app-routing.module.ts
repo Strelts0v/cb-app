@@ -27,7 +27,7 @@ const routes: Routes = [
 
   // Restaurant layout parent
   {
-    path: `${AppStates.RESTAURANT_LAYOUT}/:id`,
+    path: `${AppStates.RESTAURANT_LAYOUT}/:organizationId`,
     loadChildren: './modules/layouts/restaurant-layout/restaurant-layout.module#RestaurantLayoutModule',
     canLoad: [AuthGuard],
     canActivate: [AuthGuard]
