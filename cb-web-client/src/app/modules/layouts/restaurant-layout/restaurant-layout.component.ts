@@ -32,7 +32,7 @@ export class RestaurantLayoutComponent implements OnInit {
   }
 
   private initOrganization() {
-    const organizationId: number = +this.route.snapshot.paramMap.get('id');
+    const organizationId: number = +this.route.snapshot.paramMap.get('organizationId');
     this.organizationService.getOrganization(organizationId)
       .subscribe(organization => {
         this.organization = organization;

@@ -24,6 +24,10 @@ const routes: Routes = [
         component: RestaurantDetailsComponent,
       },
       {
+        path: `${RestaurantStates.RESTAURANT_DETAILS}/:restaurantId`,
+        component: RestaurantDetailsComponent,
+      },
+      {
         path: RestaurantStates.ORGANIZATION_DETAILS,
         component: OrganizationDetailsComponent,
       }
