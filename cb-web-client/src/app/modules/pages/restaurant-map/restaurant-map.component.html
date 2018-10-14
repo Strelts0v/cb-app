@@ -23,14 +23,4 @@
         (markerClick)="onRestaurantLocationMarkerClick(restaurant)">
     </agm-marker>
 
-    <agm-circle 
-        [latitude]="userLocation.lat" 
-        [longitude]="userLocation.lng" 
-        [(radius)]="searchAreaRadius"
-        [fillColor]="'purple'" 
-        [circleDraggable]="true" 
-        [editable]="true" 
-        (radiusChange)="onChangeSearchAreaRadius()">
-    </agm-circle>
-
 </agm-map>

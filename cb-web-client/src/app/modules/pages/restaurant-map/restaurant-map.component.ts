@@ -22,7 +22,6 @@ export class RestaurantMapComponent implements OnInit {
   public geocoder: any;
 
   userLocation: Location;
-  searchAreaRadius: number;
   restaurants: Restaurant[];
 
   @ViewChild(AgmMap) map: AgmMap;
@@ -43,7 +42,6 @@ export class RestaurantMapComponent implements OnInit {
 
   ngOnInit() {
     this.initCurrentLocation();
-    this.initCurrentSearchAreaRadius();
     this.initNearestRestaurants();
   }
 
@@ -80,10 +78,6 @@ export class RestaurantMapComponent implements OnInit {
     };
   }
 
-  private initCurrentSearchAreaRadius() {
-    this.searchAreaRadius = GeoLocationData.DEFAULT_SEARCH_AREA_RADIUS;
-  }
-
   private initGoogleMapsGeocoder() {
     this.mapsApiLoader.load().then(() => {
       this.geocoder = new google.maps.Geocoder();
@@ -95,11 +89,6 @@ export class RestaurantMapComponent implements OnInit {
       location => {
         this.userLocation = location;
         this.onUpdateMapLocation();
-      }
-    );
-    mapSearchService.searchAreaRadius$.subscribe(
-      searchAreaRadius => {
-        this.searchAreaRadius = searchAreaRadius;
       }
     );
   }
