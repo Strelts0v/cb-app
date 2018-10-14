@@ -1,0 +1,20 @@
+<app-restaurant-details-form></app-restaurant-details-form>
+
+<app-map-search-form></app-map-search-form>
+
+<agm-map *ngIf="restaurant"
+    [(latitude)]="restaurant.location.lat"
+    [(longitude)]="restaurant.location.lng" 
+    [(zoom)]="restaurant.location.zoom"
+    [disableDefaultUI]="true" 
+    [zoomControl]="true" 
+    [(fitBounds)]='restaurant.location.viewport'>
+
+    <agm-marker 
+        [(latitude)]="restaurant.location.marker.lat" 
+        [(longitude)]="restaurant.location.marker.lng" 
+        [markerDraggable]="true"
+        (dragEnd)='markerDragEnd($event)'>
+    </agm-marker>
+
+</agm-map>

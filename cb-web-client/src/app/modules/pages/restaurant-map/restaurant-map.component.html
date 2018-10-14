@@ -1,0 +1,26 @@
+<app-map-search-form></app-map-search-form>
+
+<agm-map 
+    [(latitude)]="userLocation.lat"
+    [(longitude)]="userLocation.lng" 
+    [(zoom)]="userLocation.zoom"
+    [disableDefaultUI]="true" 
+    [zoomControl]="true" 
+    [(fitBounds)]='userLocation.viewport'>
+
+    <agm-marker 
+        [(latitude)]="userLocation.marker.lat" 
+        [(longitude)]="userLocation.marker.lng" 
+        [markerDraggable]="userLocation.marker.draggable"
+        (dragEnd)='markerDragEnd($event)'>
+    </agm-marker>
+
+    <agm-marker *ngFor="let restaurant of restaurants" 
+        [latitude]="restaurant.location.marker.lat"
+        [longitude]="restaurant.location.marker.lng" 
+        [iconUrl]="restaurant.location.marker.icon"
+        [title]="restaurant.location.marker.label" 
+        (markerClick)="onRestaurantLocationMarkerClick(restaurant)">
+    </agm-marker>
+
+</agm-map>

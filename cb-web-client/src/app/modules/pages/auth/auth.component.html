@@ -1,0 +1,29 @@
+<div class="cb-auth-container">
+  <mat-card class="cb-auth-card">
+    <mat-card-header>
+      <!-- <div mat-card-avatar class="cb-auth-card__header-image"></div> -->
+      <img class="cb-auth-card__header-image" src="/assets/icons/cb-logo.png">
+      <mat-card-title>
+        <strong><h1>Authenthication</h1></strong>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="cb-auth-card__warning-message">Note: you can go to the listed layouts after you log in</p>
+      <p>Current Log In Status: {{isLoggedIn}}</p>
+    </mat-card-content>
+    <p>Select authenthication action:</p>
+    <div class="cb-auth-card__auth-actions">
+      <mat-card-actions>
+        <button mat-button (click)="logIn()">Log In</button>
+        <button mat-button (click)="logOut()">log Out</button>
+      </mat-card-actions>
+    </div>
+    <p>Select layout:</p>
+    <div class="cb-auth-card__redirect-actions">
+      <mat-card-actions>
+        <button mat-button (click)="redirectToCustomerLayout()">Customer</button>
+        <button mat-button (click)="redirectToRestaurantLayout()">Restaurant</button>
+      </mat-card-actions>
+    </div>
+  </mat-card>
+</div>
