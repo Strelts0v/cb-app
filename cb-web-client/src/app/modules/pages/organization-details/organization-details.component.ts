@@ -11,14 +11,27 @@ import { RestaurantCommunicationService } from '../../../services/restaurant-com
 })
 export class OrganizationDetailsComponent implements OnInit {
 
-  @Input() organization: Organization;
+  organization: Organization = Organization.EMPTY_ORGANIZATION;
 
   constructor(
     private organizationService: OrganizationService,
-    private restaurantCommunicationService: RestaurantCommunicationService) { }
+    private restaurantCommunicationService: RestaurantCommunicationService,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.initOrganization();
     this.initRestaurantCommunicationService();
+  }
+
+  private initOrganization() {
+    const organizationId = +this.route.parent.snapshot.paramMap.get('organizationId');
+    this.organizationService.getOrganization(organizationId).subscribe(
+      organization => {
+        this.organization = organization;
+        this.initRestaurantCommunicationService();
+        this.restaurantCommunicationService.sendUpdatedOrganization(organization);
+      }
+    );
   }
 
   private initRestaurantCommunicationService() {

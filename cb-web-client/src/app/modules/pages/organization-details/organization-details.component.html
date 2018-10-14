@@ -3,19 +3,25 @@
     <mat-card-title><h1>Organization info</h1></mat-card-title>
   </mat-card-header>
   <mat-card-content>
-      <form class="organization-form">
-        <mat-form-field class="organization-form__input">
-          <input matInput *ngIf="organization" placeholder="Organization name" [(ngModel)]="organization.name" name="name">
-        </mat-form-field>
+      <form class="organization-form" *ngIf="organization">
+        <div>
+          <mat-form-field class="organization-form__input">
+            <input matInput *ngIf="organization" placeholder="Organization name" [(ngModel)]="organization.name" name="name">
+          </mat-form-field>
+        </div>
       
-        <mat-form-field class="organization-form__input">
-          <textarea matInput *ngIf="organization" placeholder="Organization description" 
-            [(ngModel)]="organization.description" name="description"></textarea>
-        </mat-form-field>
+        <div>
+          <mat-form-field class="organization-form__input">
+            <textarea matInput *ngIf="organization" placeholder="Organization description" [(ngModel)]="organization.description"
+              name="description"></textarea>
+          </mat-form-field>
+        </div>
       </form>
 
       <div class="organization-icon-upload-form">
-        <label for="organization-icon" class="organization-icon-upload-form__label">Upload file</label>
+        <label for="organization-icon" class="organization-icon-upload-form__label">
+          <strong>Upload new Logo for organization</strong></label>
+        <br><br>
         <input id="organization-icon" type="file" [fileUploadInputFor]="fileUploadQueue" />
         <br><br>
       
