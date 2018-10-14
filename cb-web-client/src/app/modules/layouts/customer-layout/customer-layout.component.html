@@ -3,6 +3,7 @@
   <mat-drawer class="cb-sidenav-container__menu" mode="side" opened="true" color="primary">
     <div class="menu-logo">
       <img src="/assets/icons/cb-logo.png">
+      <span *ngIf="showExtendedMenu">CBox</span>
     </div>
     <mat-divider></mat-divider>
     <div class="menu-details">
@@ -14,28 +15,14 @@
 
     <mat-list *ngIf="!showExtendedMenu">
       <mat-list-item>
-        <i class="material-icons">account_circle</i>
-      </mat-list-item>
-      <mat-list-item>
-        <i class="material-icons">shopping_basket</i>
-      </mat-list-item>
-      <mat-list-item>
-        <i class="material-icons">restaurant_menu</i>
+          <i class="material-icons" (click)="onClickRestaurantsLayout()">restaurant_menu</i>
       </mat-list-item>
     </mat-list>
 
     <mat-list *ngIf="showExtendedMenu">
       <mat-list-item>
-        <i class="material-icons">account_circle</i>
-        <span class="menu-item-description">Profile</span>
-      </mat-list-item>
-      <mat-list-item>
-        <i class="material-icons">shopping_basket</i>
-        <span class="menu-item-description">Orders</span>
-      </mat-list-item>
-      <mat-list-item>
-        <i class="material-icons">restaurant_menu</i>
-        <span class="menu-item-description">Restaurants</span>
+        <i class="material-icons" (click)="onClickRestaurantsLayout()">restaurant_menu</i>
+        <span class="menu-item-description" (click)="onClickRestaurantsLayout()">Restaurants</span>
       </mat-list-item>
     </mat-list>
   </mat-drawer>

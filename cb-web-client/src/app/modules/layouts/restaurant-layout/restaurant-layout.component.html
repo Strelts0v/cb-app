@@ -3,10 +3,17 @@
     <mat-drawer class="cb-sidenav-container__menu" mode="side" opened="true" color="primary">
         <div class="menu-logo">
             <img src="/assets/icons/cb-logo.png">
+            <span *ngIf="showExtendedMenu">CBox</span>
         </div>
         <mat-divider></mat-divider>
+        <div class="menu-details">
+            <i *ngIf="showExtendedMenu" class="material-icons" (click)="showExtendedMenu = !showExtendedMenu">
+                keyboard_arrow_right</i>
+            <i *ngIf="!showExtendedMenu" class="material-icons" (click)="showExtendedMenu = !showExtendedMenu">
+                keyboard_arrow_left</i>
+        </div>
 
-        <mat-list>
+        <mat-list *ngIf="!showExtendedMenu">
             <mat-list-item>
                 <i class="material-icons" (click)="onClickRestaurantList()">view_list</i>
             </mat-list-item>
@@ -15,6 +22,28 @@
             </mat-list-item>
             <mat-list-item>
                 <i class="material-icons" (click)="onClickOrganizationSettings()">domain</i>
+            </mat-list-item>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickCustomersLayout()">group</i>
+            </mat-list-item>
+        </mat-list>
+
+        <mat-list *ngIf="showExtendedMenu">
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickRestaurantList()">view_list</i>
+                <span class="menu-item-description" (click)="onClickRestaurantList()">Restaurants</span>
+            </mat-list-item>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickAddRestaurant()">add</i>
+                <span class="menu-item-description" (click)="onClickAddRestaurant()">Add Restaurant</span>
+            </mat-list-item>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickOrganizationSettings()">domain</i>
+                <span class="menu-item-description" (click)="onClickOrganizationSettings()">Organization</span>
+            </mat-list-item>
+            <mat-list-item>
+                <i class="material-icons" (click)="onClickCustomersLayout()">group</i>
+                <span class="menu-item-description" (click)="onClickCustomersLayout()">Customers Layout</span>
             </mat-list-item>
         </mat-list>
 

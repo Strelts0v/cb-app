@@ -6,6 +6,7 @@ import { AppStates } from '../../../constants/app-states.constant';
 import { Organization } from '../../../data/organization';
 import { OrganizationService } from '../../../services/organization.service';
 import { RestaurantCommunicationService } from '../../../services/restaurant-communication.service';
+import { CustomerStates } from 'src/app/constants/customer-states.constant';
 
 @Component({
   selector: 'app-restaurant-layout',
@@ -13,9 +14,12 @@ import { RestaurantCommunicationService } from '../../../services/restaurant-com
 })
 export class RestaurantLayoutComponent implements OnInit {
 
+  showExtendedMenu: boolean;
+
   private restaurantListUrl: string;
   private restaurantDetailsUrl: string;
   private organizationUrl: string;
+  private customerLayoutUrl: string;
 
   @Input() organization: Organization;
 
@@ -50,6 +54,8 @@ export class RestaurantLayoutComponent implements OnInit {
 
     this.organizationUrl = `${AppStates.RESTAURANT_LAYOUT}` +
       `/${this.organization.id}/${RestaurantStates.ORGANIZATION_DETAILS}`;
+
+    this.customerLayoutUrl = `${AppStates.CUSTOMER_LAYOUT}/${CustomerStates.RESTAURANT_MAP}`;
   }
 
   private initRestaurantCommunicationService() {
@@ -73,7 +79,11 @@ export class RestaurantLayoutComponent implements OnInit {
   }
 
   onClickOrganizationSettings() {
-    this.router.navigate([`${this.organizationUrl}/`]);
+    this.router.navigate([this.organizationUrl]);
+  }
+
+  onClickCustomersLayout() {
+    this.router.navigate([this.customerLayoutUrl]);
   }
 
 }
