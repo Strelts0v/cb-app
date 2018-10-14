@@ -1,9 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatInput } from '@angular/material';
-import { Location } from './../../../../data/location';
-import { Marker } from './../../../../data/marker';
-import { GeoLocationData } from './../../../../constants/geo-location.constant';
-import { MapSearchService } from './../../../../services/map-search.service';
+import { Location } from './../../../data/location';
+import { Marker } from './../../../data/marker';
+import { GeoLocationData } from './../../../constants/geo-location.constant';
+import { MapSearchService } from './../../../services/map-search.service';
 
 @Component({
   selector: 'app-map-search-form',
@@ -13,15 +12,17 @@ import { MapSearchService } from './../../../../services/map-search.service';
 export class MapSearchFormComponent implements OnInit {
 
   location: Location;
-  searchAreaRadius: number;
 
   constructor(private mapSearchService: MapSearchService) {
   }
 
   ngOnInit() {
     this.initCurrentLocation();
-    this.initCurrentLocationWithDefaultData();
-    this.initCurrentSearchAreaRadius();
+    this.initMapSearchService();
+  }
+
+  searchByLocation() {
+    this.mapSearchService.sendUpdatedLocation(this.location);
   }
 
   private initCurrentLocation() {
@@ -57,25 +58,13 @@ export class MapSearchFormComponent implements OnInit {
     };
   }
 
-  private initCurrentSearchAreaRadius() {
-    this.searchAreaRadius = GeoLocationData.DEFAULT_SEARCH_AREA_RADIUS;
-  }
-
-  searchByLocation() {
-    this.mapSearchService.sendUpdatedLocation(this.location);
-  }
-
-  onChangedSearchAreaRadius() {
-    this.mapSearchService.sendUpdatedSearchAreaRadius(this.searchAreaRadius);
-  }
-
-  milesToSearchAreaRadius(value) {
-    this.searchAreaRadius = value;
-    this.onChangedSearchAreaRadius();
-  }
-
-  searchAreaRadiusInMiles() {
-    return this.searchAreaRadius;
+  private initMapSearchService() {
+    this.mapSearchService.location$.subscribe(
+      location => {
+        this.location = location;
+        this.searchByLocation();
+      }
+    );
   }
 
 }
