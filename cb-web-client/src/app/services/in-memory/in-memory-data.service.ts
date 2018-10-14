@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Restaurant } from '../../data/restaurant';
 import { Organization } from '../../data/organization';
+import { GeoLocationData } from 'src/app/constants/geo-location.constant';
 
 declare var google: any;
 
@@ -51,6 +52,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5680,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9147,
             lng: 27.5680,
@@ -79,6 +81,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5600,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9208,
             lng: 27.5600,
@@ -107,6 +110,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5750,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9367,
             lng: 27.5750,
@@ -135,6 +139,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5680,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9017,
             lng: 27.5680,
@@ -163,6 +168,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5765,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9017,
             lng: 27.5765,
@@ -191,6 +197,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5885,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9207,
             lng: 27.5885,
@@ -219,6 +226,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.5651,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9033,
             lng: 27.5651,
@@ -247,6 +255,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.1680,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.1147,
             lng: 27.1680,
@@ -275,6 +284,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.2680,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.5147,
             lng: 27.2680,
@@ -303,6 +313,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 27.0680,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 54.2147,
             lng: 27.0680,
@@ -331,6 +342,7 @@ export class InMemoryDataService implements InMemoryDbService {
           lng: 28.5280,
           country: 'Belarus',
           city: 'Minsk',
+          zoom: GeoLocationData.DEFAULT_ZOOM,
           marker: {
             lat: 53.9347,
             lng: 27.5280,
