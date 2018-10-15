@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Restaurant } from '../../../../data/restaurant';
 import { RestaurantService } from '../../../../services/restaurant.service';
-import { RestaurantCommunicationService } from 'src/app/services/restaurant-communication.service';
-import { MapSearchService } from 'src/app/services/map-search.service';
-import { Organization } from 'src/app/data/organization';
+import { RestaurantCommunicationService } from '../../../../services/restaurant-communication.service';
+import { MapSearchService } from '../../../../services/map-search.service';
+import { Organization } from '../../../../data/organization';
 import { ActivatedRoute, Router } from '@angular/router';
-import { OrganizationService } from 'src/app/services/organization.service';
-import { MessageService } from 'src/app/services/message.service';
-import { AppStates } from 'src/app/constants/app-states.constant';
-import { RestaurantStates } from 'src/app/constants/restaurant-states.constant';
+import { OrganizationService } from '../../../../services/organization.service';
+import { MessageService } from '../../../../services/message.service';
+import { AppStates } from '../../../../constants/app-states.constant';
+import { RestaurantStates } from '../../../../constants/restaurant-states.constant';
 
 @Component({
   selector: 'app-restaurant-details-form',

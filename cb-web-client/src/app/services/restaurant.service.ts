@@ -73,7 +73,6 @@ export class RestaurantService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       this.log(error);
-      this.messageService.notify(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }

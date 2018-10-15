@@ -1,6 +1,6 @@
 <app-map-search-form></app-map-search-form>
 
-<agm-map 
+<agm-map *ngIf="userLocation"
     [(latitude)]="userLocation.lat"
     [(longitude)]="userLocation.lng" 
     [(zoom)]="userLocation.zoom"

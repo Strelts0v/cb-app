@@ -6,7 +6,7 @@ import { AppStates } from '../../../constants/app-states.constant';
 import { Organization } from '../../../data/organization';
 import { OrganizationService } from '../../../services/organization.service';
 import { RestaurantCommunicationService } from '../../../services/restaurant-communication.service';
-import { CustomerStates } from 'src/app/constants/customer-states.constant';
+import { CustomerStates } from '../../../constants/customer-states.constant';
 
 @Component({
   selector: 'app-restaurant-layout',

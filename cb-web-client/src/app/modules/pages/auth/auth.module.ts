@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { AuthComponent } from './auth.component';
 import { ServicesModule } from '../../../services/services.module';
 import { MaterialModule } from '../../shared/material/material.module';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [

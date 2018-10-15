@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../../services/auth.service';
 import { Router } from '@angular/router';
-import { AppStates } from 'src/app/constants/app-states.constant';
-import { RestaurantStates } from 'src/app/constants/restaurant-states.constant';
+import { AuthService } from '../../../services/auth.service';
+import { AppStates } from '../../../constants/app-states.constant';
+import { RestaurantStates } from '../../../constants/restaurant-states.constant';
 
 @Component({
   selector: 'app-customer-layout',
