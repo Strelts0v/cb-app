@@ -59,6 +59,10 @@ body {
       i {
           cursor: pointer;
       }
+      
+      .toolbar__option:hover {
+        color: #d0c986
+      }
   }
     
   .cb-sidenav-container__main-content {
@@ -68,6 +72,3 @@ body {
   }
 }
 
-.material-icons:hover {
-  color: #673ab7;
-}
