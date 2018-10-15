@@ -1,4 +1,4 @@
-import { Component, ViewChild, NgZone, OnInit } from '@angular/core';
+import { Component, ViewChild, NgZone, OnInit, AfterViewInit } from '@angular/core';
 import { MapsAPILoader, AgmMap } from '@agm/core';
 import { GoogleMapsAPIWrapper } from '@agm/core/services';
 import { MapSearchService } from './../../../services/map-search.service';
@@ -11,7 +11,7 @@ import { MessageService } from '../../../services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { OrganizationService } from '../../../services/organization.service';
 import { Organization } from '../../../data/organization';
-import { RestaurantCommunicationService } from 'src/app/services/restaurant-communication.service';
+import { RestaurantCommunicationService } from '../../../services/restaurant-communication.service';
 
 declare var google: any;
 

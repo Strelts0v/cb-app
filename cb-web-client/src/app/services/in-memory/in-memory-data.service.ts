@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Restaurant } from '../../data/restaurant';
 import { Organization } from '../../data/organization';
-import { GeoLocationData } from 'src/app/constants/geo-location.constant';
+import { GeoLocationData } from '../../constants/geo-location.constant';
 
 declare var google: any;
 

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject, BehaviorSubject } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Organization } from '../data/organization';
 import { Restaurant } from '../data/restaurant';
 

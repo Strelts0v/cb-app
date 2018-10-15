@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Restaurant } from '../../../data/restaurant';
-import { MatTableDataSource, MatPaginator } from '@angular/material';
-import { RestaurantService } from '../../../services/restaurant.service';
+import { SelectionModel } from '@angular/cdk/collections';
 import { Router, ActivatedRoute } from '@angular/router';
-import { RestaurantCommunicationService } from '../../../services/restaurant-communication.service';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
+import { Restaurant } from '../../../data/restaurant';
+import { RestaurantService } from '../../../services/restaurant.service';
 import { Organization } from '../../../data/organization';
 import { OrganizationService } from 'src/app/services/organization.service';
-import { SelectionModel } from '@angular/cdk/collections';
+import { MessageService } from '../../../services/message.service';
 
 @Component({
   selector: 'app-restaurant-control',
@@ -26,7 +26,8 @@ export class RestaurantControlComponent implements OnInit {
     private restaurantService: RestaurantService,
     private router: Router,
     private route: ActivatedRoute,
-    private organizationService: OrganizationService) {
+    private organizationService: OrganizationService,
+    private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -83,6 +84,7 @@ export class RestaurantControlComponent implements OnInit {
           index++;
           if (index === restaurants.length) {
             this.initRestaurants();
+            this.messageService.notify(`Restaurant deleting was successful!`);
           }
         });
     });

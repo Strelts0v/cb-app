@@ -144,8 +144,6 @@ export class RestaurantMapComponent implements OnInit {
         }
 
         this.map.triggerResize();
-      } else {
-        alert(`Sorry, this search produced no results.`);
       }
     });
   }
