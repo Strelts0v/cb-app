@@ -1,12 +1,12 @@
 <mat-drawer-container class="cb-sidenav-container" autosize>
 
     <mat-drawer class="cb-sidenav-container__menu" mode="side" opened="true" color="primary">
-        <div class="menu-logo">
+        <div class="menu__logo">
             <img src="/assets/icons/cb-logo.png">
             <span *ngIf="showExtendedMenu">CBox</span>
         </div>
         <mat-divider></mat-divider>
-        <div class="menu-details">
+        <div class="menu__show-details">
             <i *ngIf="showExtendedMenu" class="material-icons" (click)="showExtendedMenu = !showExtendedMenu">
                 keyboard_arrow_right</i>
             <i *ngIf="!showExtendedMenu" class="material-icons" (click)="showExtendedMenu = !showExtendedMenu">
@@ -14,48 +14,44 @@
         </div>
 
         <mat-list *ngIf="!showExtendedMenu">
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickRestaurantList()">view_list</i>
+            <mat-list-item class="menu__option" (click)="onClickRestaurantList()">
+                <i class="material-icons">view_list</i>
             </mat-list-item>
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickAddRestaurant()">add</i>
+            <mat-list-item class="menu__option" (click)="onClickAddRestaurant()">
+                <i class="material-icons">add</i>
             </mat-list-item>
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickOrganizationSettings()">domain</i>
+            <mat-list-item class="menu__option" (click)="onClickOrganizationSettings()">
+                <i class="material-icons">domain</i>
             </mat-list-item>
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickCustomersLayout()">group</i>
+            <mat-list-item class="menu__option" (click)="onClickCustomersLayout()">
+                <i class="material-icons">group</i>
             </mat-list-item>
         </mat-list>
 
         <mat-list *ngIf="showExtendedMenu">
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickRestaurantList()">view_list</i>
-                <span class="menu-item-description" (click)="onClickRestaurantList()">Restaurants</span>
+            <mat-list-item class="menu__option" (click)="onClickRestaurantList()">
+                <i class="material-icons">view_list</i>
+                <span class="menu-item-description">Restaurants</span>
             </mat-list-item>
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickAddRestaurant()">add</i>
-                <span class="menu-item-description" (click)="onClickAddRestaurant()">Add Restaurant</span>
+            <mat-list-item class="menu__option" (click)="onClickAddRestaurant()">
+                <i class="material-icons">add</i>
+                <span class="menu-item-description">Add Restaurant</span>
             </mat-list-item>
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickOrganizationSettings()">domain</i>
-                <span class="menu-item-description" (click)="onClickOrganizationSettings()">Organization</span>
+            <mat-list-item class="menu__option" (click)="onClickOrganizationSettings()">
+                <i class="material-icons">domain</i>
+                <span class="menu-item-description">Organization</span>
             </mat-list-item>
-            <mat-list-item>
-                <i class="material-icons" (click)="onClickCustomersLayout()">group</i>
-                <span class="menu-item-description" (click)="onClickCustomersLayout()">Customers Layout</span>
+            <mat-list-item class="menu__option" (click)="onClickCustomersLayout()">
+                <i class="material-icons">group</i>
+                <span class="menu-item-description">Customers Layout</span>
             </mat-list-item>
         </mat-list>
 
     </mat-drawer>
     <mat-toolbar color="primary">
         <mat-toolbar-row class="cb-sidenav-container__toolbar">
-            <div>
-                <i class="material-icons">notifications</i>
-            </div>
-            <div>
-                <i class="material-icons" (click)="onLogoutClick()">exit_to_app</i>
-            </div>
+            <div><i class="material-icons">notifications</i></div>
+            <div><i class="material-icons" (click)="onLogoutClick()">exit_to_app</i></div>
         </mat-toolbar-row>
     </mat-toolbar>
     <div class="cb-sidenav-container__main-content">
