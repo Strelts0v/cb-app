@@ -15,6 +15,7 @@ body {
 .cb-sidenav-container {
   height: 100%;
   width: 100%;
+  background-color: rgb(238, 238, 238);
 
   .cb-sidenav-container__menu {
       padding: 10px;
@@ -22,19 +23,31 @@ body {
       align-items: center;
       cursor: pointer;
   
-      .menu-logo {
+      .menu__logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         padding: 10px;
         img {
           max-width: 50px;
           height: auto;
         }
+        span {
+          padding: 10px;
+          font-weight: bold;
+          font-size: 20px;
+        }
       }
   
-      .menu-item-description {
+      .menu__option:hover {
+        color: #673ab7;
+      }
+
+      .menu__option-description {
         padding-left: 5px;
       }
   
-      .menu-details {
+      .menu__show-details {
         padding: 20px 0 0 15px;
       }
   }
@@ -55,3 +68,6 @@ body {
   }
 }
 
+.material-icons:hover {
+  color: #673ab7;
+}

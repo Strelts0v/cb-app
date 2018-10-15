@@ -4,8 +4,11 @@ import { RestaurantService } from '../../../../services/restaurant.service';
 import { RestaurantCommunicationService } from 'src/app/services/restaurant-communication.service';
 import { MapSearchService } from 'src/app/services/map-search.service';
 import { Organization } from 'src/app/data/organization';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrganizationService } from 'src/app/services/organization.service';
+import { MessageService } from 'src/app/services/message.service';
+import { AppStates } from 'src/app/constants/app-states.constant';
+import { RestaurantStates } from 'src/app/constants/restaurant-states.constant';
 
 @Component({
   selector: 'app-restaurant-details-form',
@@ -19,12 +22,16 @@ export class RestaurantDetailsFormComponent implements OnInit {
   organization: Organization;
   restaurants: Restaurant[];
 
+  private restaurantListUrl: string;
+
   constructor(
     private restaurantService: RestaurantService,
     private organizationService: OrganizationService,
     private restaurantCommunicationService: RestaurantCommunicationService,
     private mapSearchService: MapSearchService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router,
+    private messageService: MessageService) {
   }
 
   ngOnInit() {
@@ -40,6 +47,8 @@ export class RestaurantDetailsFormComponent implements OnInit {
       organization => {
         this.organization = organization;
         this.initRestaurantByCommunicationService();
+        this.restaurantListUrl =
+          `${AppStates.RESTAURANT_LAYOUT}/${this.organization.id}/${RestaurantStates.RESTAURANT_CONTROL}`;
       }
     );
   }
@@ -82,6 +91,8 @@ export class RestaurantDetailsFormComponent implements OnInit {
       .subscribe(addedRestaurant => {
         this.restaurant = addedRestaurant;
         this.initRestaurants();
+        this.messageService.notify(`New restaurant has been successfully added!`);
+        this.router.navigate([this.restaurantListUrl]);
       }
     );
   }
@@ -90,6 +101,7 @@ export class RestaurantDetailsFormComponent implements OnInit {
     this.restaurantService.updateRestaurant(this.restaurant)
       .subscribe(_ => {
         this.initRestaurants();
+        this.messageService.notify(`Restaurant has been successfully updated!`);
       }
     );
   }

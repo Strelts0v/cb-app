@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { RestaurantCommunicationService } from '../../../services/restaurant-communication.service';
 import { Organization } from '../../../data/organization';
 import { OrganizationService } from 'src/app/services/organization.service';
+import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
   selector: 'app-restaurant-control',
@@ -14,8 +15,9 @@ import { OrganizationService } from 'src/app/services/organization.service';
 })
 export class RestaurantControlComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'country', 'city', 'street'];
+  displayedColumns: string[] = ['select', 'id', 'name', 'country', 'city', 'street'];
   dataSource = new MatTableDataSource<Restaurant>();
+  selection = new SelectionModel<Restaurant>(true, []);
   organization: Organization;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -51,9 +53,39 @@ export class RestaurantControlComponent implements OnInit {
     );
   }
 
+  isAllRowsSelected() {
+    const numSelected = this.selection.selected.length;
+    const numRows = this.dataSource.data.length;
+    return numSelected === numRows;
+  }
+
+  toggleAllRowsSelected() {
+    this.isAllRowsSelected() ?
+        this.selection.clear() :
+        this.dataSource.data.forEach(row => this.selection.select(row));
+  }
+
   onRestaurantClick(restaurantId: number) {
     const restaurantDetailsUrl = `restaurant/${this.organization.id}/details/${restaurantId}`;
     this.router.navigate([restaurantDetailsUrl]);
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  deleteSelectedRestaurants() {
+    const restaurants = this.selection.selected;
+    let index = 0;
+    restaurants.forEach(restaurant => {
+      this.restaurantService.deleteRestaurant(restaurant).subscribe(
+        _ => {
+          index++;
+          if (index === restaurants.length) {
+            this.initRestaurants();
+          }
+        });
+    });
   }
 
 }

@@ -8,4 +8,33 @@
     .restaurants-table-wrapper__table-row {
         cursor: pointer;
     }
+
+    .restaurants-table-wrapper__actions-block {
+        display: flex;
+        justify-content: flex-start;
+        padding: 5px 20px;
+        margin-bottom: 10px;
+
+        .actions-block__filter {
+            margin-left: 5px;
+        }
+
+        .actions-block__remove-restaurants {
+            margin-left: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .actions-block__remove-restaurants:hover {
+            color: #673ab7;
+        }
+    }
+
+    .restaurants-table-wrapper__paginator {
+        position: fixed;
+        bottom: 52px;
+        right: 10px;
+    }
 }
