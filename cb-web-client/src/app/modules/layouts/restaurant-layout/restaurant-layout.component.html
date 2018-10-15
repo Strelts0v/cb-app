@@ -50,8 +50,9 @@
     </mat-drawer>
     <mat-toolbar color="primary">
         <mat-toolbar-row class="cb-sidenav-container__toolbar">
-            <div><i class="material-icons">notifications</i></div>
-            <div><i class="material-icons" (click)="onLogoutClick()">exit_to_app</i></div>
+            <div class="toolbar__option">
+                <i class="material-icons" (click)="onLogoutClick()">exit_to_app</i>
+            </div>
         </mat-toolbar-row>
     </mat-toolbar>
     <div class="cb-sidenav-container__main-content">
