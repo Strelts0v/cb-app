@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthConstants } from '../constants/auth.constant';
 import { AppStates } from '../constants/app-states.constant';
-import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'

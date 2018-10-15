@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { Location } from './../../../data/location';
 import { Marker } from './../../../data/marker';
 import { GeoLocationData } from './../../../constants/geo-location.constant';

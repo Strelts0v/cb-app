@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
-import { Restaurant } from '../data/restaurant';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 import { Endpoints } from '../constants/endpoint.constant';
@@ -75,7 +74,6 @@ export class OrganizationService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       this.log(error);
-      this.messageService.notify(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }

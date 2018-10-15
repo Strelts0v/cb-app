@@ -11,7 +11,7 @@ import { RestaurantCommunicationService } from '../../../services/restaurant-com
 })
 export class OrganizationDetailsComponent implements OnInit {
 
-  organization: Organization = Organization.EMPTY_ORGANIZATION;
+  organization: Organization;
 
   constructor(
     private organizationService: OrganizationService,
