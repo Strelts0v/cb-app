@@ -62,7 +62,6 @@ export class MapSearchFormComponent implements OnInit {
     this.mapSearchService.location$.subscribe(
       location => {
         this.location = location;
-        this.searchByLocation();
       }
     );
   }

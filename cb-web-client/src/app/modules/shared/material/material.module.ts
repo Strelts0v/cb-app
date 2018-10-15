@@ -18,6 +18,7 @@ import {
   MatDatepickerModule,
   MatNativeDateModule,
   MatGridListModule,
+  MatCheckboxModule
 } from '@angular/material';
 
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -45,6 +46,7 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     MatExpansionModule,
     MatGridListModule,
     MatFileUploadModule,
+    MatCheckboxModule
   ],
   exports: [
     MatIconModule,
@@ -66,7 +68,8 @@ import { MatFileUploadModule } from 'angular-material-fileupload';
     MatNativeDateModule,
     MatExpansionModule,
     MatGridListModule,
-    MatFileUploadModule
+    MatFileUploadModule,
+    MatCheckboxModule
   ]
 })
 export class MaterialModule {

@@ -4,10 +4,11 @@ import { RestaurantDetailsComponent } from './restaurant-details.component';
 import { MaterialModule } from '../../shared/material/material.module';
 import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 import { FormsModule } from '@angular/forms';
-import { MapSearchFormComponent } from '../../components/map-search-form/map-search-form.component';
 import { ServicesModule } from '../../../services/services.module';
 import { RestaurantDetailsFormComponent } from './restaurant-details-form/restaurant-details-form.component';
 import { MapSearchFormModule } from '../../components/map-search-form/map-search-form.module';
+import { NotificationDialogModule } from '../../components/notification-dialog/notification-dialog.module';
+import { NotificationDialogComponent } from '../../components/notification-dialog/notification-dialog.component';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MapSearchFormModule } from '../../components/map-search-form/map-search
       apiKey: 'AIzaSyAfJTVKnpLl0ULuuwDuix-9ANpyQhP6mfc'
     }),
     FormsModule,
-    MapSearchFormModule
+    MapSearchFormModule,
+    NotificationDialogModule
   ],
   declarations: [
     RestaurantDetailsComponent,
@@ -29,7 +31,8 @@ import { MapSearchFormModule } from '../../components/map-search-form/map-search
   ],
   entryComponents: [
     RestaurantDetailsComponent,
-    RestaurantDetailsFormComponent
+    RestaurantDetailsFormComponent,
+    NotificationDialogComponent
   ],
   bootstrap: [RestaurantDetailsComponent]
 })

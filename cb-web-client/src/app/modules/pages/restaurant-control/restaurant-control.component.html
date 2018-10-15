@@ -1,37 +1,61 @@
 <div class="restaurants-table-wrapper">
-    <table mat-table [dataSource]="dataSource" class="restaurants-table-wrapper__table">
-  
-      <ng-container matColumnDef="id">
-        <th mat-header-cell *matHeaderCellDef> ID # </th>
-        <td mat-cell *matCellDef="let restaurant"> {{restaurant.id}} </td>
-      </ng-container>
-  
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let restaurant"> {{restaurant.name}} </td>
-      </ng-container>
 
-      <ng-container matColumnDef="country">
-          <th mat-header-cell *matHeaderCellDef> Country </th>
-          <td mat-cell *matCellDef="let restaurant"> {{restaurant.location.country}} </td>
-        </ng-container>
-  
-      <ng-container matColumnDef="city">
-        <th mat-header-cell *matHeaderCellDef> City </th>
-        <td mat-cell *matCellDef="let restaurant"> {{restaurant.location.city}} </td>
-      </ng-container>
+  <mat-card class="restaurants-table-wrapper__actions-block">
+    <div class="actions-block__filter">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+    </div>
+    <div class="actions-block__remove-restaurants" (click)="deleteSelectedRestaurants()">
+      <i class="material-icons">delete</i>
+      <span>Remove Restaurants</span>
+    </div>
+  </mat-card>
 
-      <ng-container matColumnDef="street">
-        <th mat-header-cell *matHeaderCellDef> Street </th>
-        <td mat-cell *matCellDef="let restaurant"> {{restaurant.location.street}} </td>
-      </ng-container>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="onRestaurantClick(row.id)" class="restaurants-table-wrapper__table-row"></tr>
-    </table>
-  
-    <mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons>
-    </mat-paginator>
-  </div>
-  
+  <table mat-table [dataSource]="dataSource" class="restaurants-table-wrapper__table">
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? toggleAllRowsSelected() : null" 
+          [checked]="selection.hasValue() && isAllRowsSelected()"
+          [indeterminate]="selection.hasValue() && !isAllRowsSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()" (change)="$event ? selection.toggle(row) : null" [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID # </th>
+      <td mat-cell *matCellDef="let restaurant"> {{restaurant.id}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Name </th>
+      <td mat-cell *matCellDef="let restaurant"> {{restaurant.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="country">
+      <th mat-header-cell *matHeaderCellDef> Country </th>
+      <td mat-cell *matCellDef="let restaurant"> {{restaurant.location.country}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="city">
+      <th mat-header-cell *matHeaderCellDef> City </th>
+      <td mat-cell *matCellDef="let restaurant"> {{restaurant.location.city}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="street">
+      <th mat-header-cell *matHeaderCellDef> Street </th>
+      <td mat-cell *matCellDef="let restaurant"> {{restaurant.location.street}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="onRestaurantClick(row.id)" class="restaurants-table-wrapper__table-row"></tr>
+  </table>
+
+  <mat-paginator class="restaurants-table-wrapper__paginator" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons>
+  </mat-paginator>
+</div>
